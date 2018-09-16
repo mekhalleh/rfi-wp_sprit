@@ -44,7 +44,6 @@ def cli_args() :
 	parser._action_groups.append(optional)
 	return(cli_args_helper(parser.parse_args(), parser))
 
-
 def cli_args_helper(arguments, parser) :
 	
 	## URL.
@@ -109,18 +108,18 @@ def exiting(message, ret_code) :
 def isurl(url) :
 	from re import compile, match, IGNORECASE
 	r = compile(
-    		r"^(?:http)s?://" 									# http:// or https://
-		r"(?:(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+(?:[A-Z]{2,6}\.?|[A-Z0-9-]{2,}\.?)|" 	# domain name
-		r"localhost|" 										# localhost
-		r"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}|"							# IPv4
-		r"\[?[A-F0-9]*:[A-F0-9:]+\]?)" 								# IPv6
-		r"(?::\d+)?"										# optional port
+    	r"^(?:http)s?://"                                                                     # http:// or https://
+		r"(?:(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+(?:[A-Z]{2,6}\.?|[A-Z0-9-]{2,}\.?)|"  # domain name
+		r"localhost|"                                                                         # localhost
+		r"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}|"                                                # IPv4
+		r"\[?[A-F0-9]*:[A-F0-9:]+\]?)"                                                        # IPv6
+		r"(?::\d+)?"                                                                          # optional port
 		r"(?:/?|[/?]\S+)$",
 		IGNORECASE
 	)
 
 	if(match(r, url)) :
-        	return(True)
+        return(True)
 
 	return(False)
 
